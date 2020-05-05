@@ -1,24 +1,5 @@
-# electron-vue-pouchdb
+Vue electron builder issue
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. `yarn install`
+2. `yarn electron:serve`: should able visit `http://localhost:3000` and `http://localhost:3000/db`
+3. `yarn electron:build`: can visit `http://localhost:3000` but not `http://localhost:3000/db`
