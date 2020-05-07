@@ -22,4 +22,8 @@ express = express.use('/db', ep)
 express.listen(3000)
 
 const db = new withdefaultPath('test')
-db.allDocs().then(doc=> console.log(doc))
+db.allDocs({
+  include_docs: true
+}).then(doc=> {
+  console.log(doc)
+})
