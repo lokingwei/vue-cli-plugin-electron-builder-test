@@ -21,8 +21,8 @@ const withdefaultPath = PouchDB.defaults({ prefix: `${dir}/temp/`, adapter: 'lev
 // express = express.use('/db', ep)
 // express.listen(3000)
 
-const db1 = new withdefaultPath('clean')
-const db2 = new withdefaultPath('withDoc')
+const clean = new withdefaultPath('clean')
+const withDoc = new withdefaultPath('withDoc')
 const performAllDoc = async (db) => {
   db.allDocs({
     include_docs: true //eslint-disable-line
@@ -30,11 +30,11 @@ const performAllDoc = async (db) => {
     console.log(db.name, doc)
   })
 }
-db1.get('test')
-  .then(() => performAllDoc(db1))
+withDoc.get('test')
+  .then(() => performAllDoc(withDoc))
   .catch(() => {
-    db1.put({ _id:'test'})
-    performAllDoc(db1)
+    withDoc.put({ _id:'test'})
+    performAllDoc(withDoc)
   })
 
-performAllDoc(db2)
+performAllDoc(clean)
