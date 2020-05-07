@@ -1,27 +1,25 @@
-import Vue from "vue";
-import App from "./App.vue";
 import PouchDB from "pouchdb";
-import { app } from 'electron';
-import * as ExpressPouchDB from 'express-pouchdb'
+// import Memory from "pouchdb-adapter-memory";
+import ExpressPouchDB from 'express-pouchdb'
 import Express from 'express'
+import { remote } from 'electron'
 
-Vue.config.productionTip = false;
-new Vue({
-  render: h => h(App)
-}).$mount("#app");
+// PouchDB.plugin(Memory)
 
-let dbDir = './temp/'
-if (process.env.PROD) {
-  const userDataDirectory = app.getPath('userData')
-  dbDir = `${userDataDirectory}/db`
+let dir = '.'
+if(process.env.NODE_ENV === 'production') {
+  dir = remote.app.getPath('userData')
 }
-const withdefaultPath = PouchDB.defaults({prefix: dbDir});
-(async () => {
-  const app = new Express()
-  app.get('/', function (req, res) {
-    res.send('GET request to the homepage')
-  })
-  app.use('/db', ExpressPouchDB(withdefaultPath))
-  app.listen(3000)
-  console.log(new withdefaultPath('./sample/'))
-})()
+const withdefaultPath = PouchDB.defaults({ prefix: `${dir}/temp/`, adapter: 'leveldb' })
+
+let express = new Express()
+express.get('/', function (req, res) {
+  res.send('GET request to the homepage')
+})
+console.log(express._router.stack)
+const ep = ExpressPouchDB(withdefaultPath)
+express = express.use('/db', ep)
+express.listen(3000)
+
+const db = new withdefaultPath('test')
+db.allDocs().then(doc=> console.log(doc))

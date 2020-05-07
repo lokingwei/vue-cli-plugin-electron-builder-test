@@ -1417,6 +1417,13 @@ abort-controller@3.0.0:
   dependencies:
     event-target-shim "^5.0.0"
 
+abstract-leveldown@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/abstract-leveldown/-/abstract-leveldown-2.4.1.tgz#b3bfedb884eb693a12775f0c55e9f0a420ccee64"
+  integrity sha1-s7/tuITraToSd18MVenwpCDM7mQ=
+  dependencies:
+    xtend "~4.0.0"
+
 abstract-leveldown@^6.2.1:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/abstract-leveldown/-/abstract-leveldown-6.3.0.tgz#d25221d1e6612f820c35963ba4bd739928f6026a"
@@ -6500,6 +6507,11 @@ ltgt@2.2.1, ltgt@^2.1.2:
   resolved "https://registry.yarnpkg.com/ltgt/-/ltgt-2.2.1.tgz#f35ca91c493f7b73da0e07495304f17b31f87ee5"
   integrity sha1-81ypHEk/e3PaDgdJUwTxezH4fuU=
 
+ltgt@~2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/ltgt/-/ltgt-2.1.3.tgz#10851a06d9964b971178441c23c9e52698eece34"
+  integrity sha1-EIUaBtmWS5cReEQcI8nlJpjuzjQ=
+
 make-dir@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
@@ -6578,6 +6590,17 @@ mem@^4.0.0:
     map-age-cleaner "^0.1.1"
     mimic-fn "^2.0.0"
     p-is-promise "^2.0.0"
+
+memdown@1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/memdown/-/memdown-1.2.4.tgz#cd9a34aaf074d53445a271108eb4b8dd4ec0f27f"
+  integrity sha1-zZo0qvB01TRFonEQjrS43U7A8n8=
+  dependencies:
+    abstract-leveldown "2.4.1"
+    functional-red-black-tree "^1.0.1"
+    immediate "^3.2.3"
+    inherits "~2.0.1"
+    ltgt "~2.1.3"
 
 memory-fs@^0.4.1:
   version "0.4.1"
@@ -8047,18 +8070,14 @@ pouchdb-adapter-leveldb-core@7.1.1:
     sublevel-pouchdb "7.1.1"
     through2 "3.0.1"
 
-pouchdb-adapter-leveldb@7.1.1:
+pouchdb-adapter-memory@7.1.1:
   version "7.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-leveldb/-/pouchdb-adapter-leveldb-7.1.1.tgz#e835a6a466612fe94a0fd4a67d14eec7cd3f20fd"
-  integrity sha512-MXcImKpPh9/TDR3DizPlOHLn9lqrWETYvWvH3TdW33Ob2BIugaOVdVyXkyreg7kwypaafchfHVRqZEzFkFzQsg==
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-memory/-/pouchdb-adapter-memory-7.1.1.tgz#10c71aa249afadf3b4c39915865254f7f934abed"
+  integrity sha512-XkAhtemGxk2JmGxCpXyv1he3qchkZjIdpKz1kmZEVDx0FgbkqAbzxTWrmTSIAdwSYMglTV/DXjSMsyWWbUH4AA==
   dependencies:
-    level "5.0.1"
-    level-write-stream "1.0.0"
-    leveldown "5.0.2"
+    memdown "1.2.4"
     pouchdb-adapter-leveldb-core "7.1.1"
-    pouchdb-merge "7.1.1"
     pouchdb-utils "7.1.1"
-    through2 "3.0.1"
 
 pouchdb-adapter-utils@7.1.1:
   version "7.1.1"
