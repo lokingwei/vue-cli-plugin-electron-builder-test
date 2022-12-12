@@ -15,7 +15,7 @@
   "dependencies": {
     "asar": "^3.0.3",
     "core-js": "^3.6.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-pouchdb": "^4.2.0",
     "pouchdb": "7.1.1",
     "pouchdb-adapter-memory": "7.1.1",
